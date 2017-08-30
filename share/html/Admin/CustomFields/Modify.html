@@ -369,7 +369,7 @@ if ( $ARGS{'Update'} && $id ne 'new' ) {
                 $ARGS{$paramtag."-new-$_"} =~ s/\s+$//;
                 $_ => $ARGS{ $paramtag ."-new-$_" } } grep { defined $ARGS{ $paramtag ."-new-$_" } } qw/ Name Description SortOrder Category/
         );
-        push (@results, $msg);
+        push (@results, "New custom field value added");
         $added_cfv = 1 if $id;
 
         my $cfv = RT::CustomFieldValue->new( $session{CurrentUser} );
