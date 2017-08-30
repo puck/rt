@@ -111,13 +111,15 @@ if ( $Update ) {
     if ( defined (my $del = $ARGS{"RemoveRole-$id"}) ) {
         foreach my $id ( ref $del ? (@$del) : ($del) ) {
             my ($status, $msg) = $role->RemoveFromObject( $id );
-            push @results, $msg;
+            my $role_name = $role->Name;
+            push @results, "$role_name removed from queue #$id";
         }
     }
     if ( defined (my $add = $ARGS{"AddRole-$id"}) ) {
         foreach my $id ( ref $add ? (@$add) : ($add) ) {
             my ($status, $msg) = $role->AddToObject( $id );
-            push @results, $msg;
+            my $role_name = $role->Name;
+            push @results, "$role_name added to queue #$id";
         }
     }
     MaybeRedirectForResults(
